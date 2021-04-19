@@ -6,6 +6,8 @@
 makeCacheMatrix <- function(x = matrix()) 
   {
   j <- NULL
+  
+  ##Methods SET and GET to establish or recover the matrix value.
   set <- function( matrix ) {
     m <<- matrix
     j <<- NULL
@@ -14,13 +16,15 @@ makeCacheMatrix <- function(x = matrix())
     m
   }
   
+  ##methods to set or get the inverse
   setInverse <- function(inverse) {
     j <<- inverse
   }
-  
-  getInverse <- function() {
+    getInverse <- function() {
     j
   }
+    
+  ##It  returns the list of operations available.  
   list(set = set, get = get,
        setInverse = setInverse,
        getInverse = getInverse)
@@ -37,6 +41,7 @@ cacheSolve <- function(x, ...)
     return(k)
   }
   mat <- x$get()
+  ##Calculates the inverse of the indicated matrix.
   k <- solve(mat,...)
   x$setInverse(k)
   k
